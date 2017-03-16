@@ -1,0 +1,107 @@
+# Site settings
+title: Ofei
+SEOTitle: Ofei的小窝
+header-img: img/post-bg-rwd.jpg
+email: aohui555@yeah.net
+description: "简单快乐的生活"
+keyword: "Ofei的博客, 前端，生活, css, css3, html, html5, javascript, nodejs, react"
+url: "https://ofei.github.io"          # your host, for absolute URL
+baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "好好的。"
+sidebar-avatar: /img/avatar_m.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# SNS settings
+RSS: false
+weibo_username:     aire555
+zhihu_username:     fei-o
+github_username:    Ofei
+facebook_username:  hui.ao.188
+jianshu_username:   9ad03e8d075f
+#twitter_username:   ofei
+
+
+
+
+# Build settings
+# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Gems
+# from PR#40, to support local preview for Jekyll 3.0
+gems: [jekyll-paginate]
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+
+
+
+# Disqus settings
+#disqus_username: _your_disqus_short_name_
+
+# Duoshuo settings
+#duoshuo_username: 麦田一片绿
+# Share component is depend on Comment so we can NOT use share only.
+#duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+
+
+# Analytics settings
+# Baidu Analytics
+#ba_track_id: b50bf2b12b5338a1845e33832976fd68
+
+# Google Analytics
+#ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
+#ga_domain: auto
+
+
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 0              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: true
+
+
+
+# Friends
+friends: [
+    {
+        title: "简书·BY",
+        href: "http://www.jianshu.com/u/9ad03e8d075f"
+    },{
+        title: "Apple",
+        href: "https://apple.com"
+    },{
+        title: "Apple Developer",
+        href: "https://developer.apple.com/"
+    },{
+        title: "MDN Developer",
+        href: "https://developer.mozilla.org/zh-CN/"
+    }
+]
