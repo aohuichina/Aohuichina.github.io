@@ -5,7 +5,7 @@ header-img: img/post-bg-rwd.jpg
 email: aohui555@yeah.net
 description: "简单快乐的生活"
 keyword: "Ofei的博客, 前端，生活, css, css3, html, html5, javascript, nodejs, react"
-url: "https://ofei.github.io"          # your host, for absolute URL
+url: "https://aohuichina.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 
 
