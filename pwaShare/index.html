@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>浅谈PWA</title>
+	<meta name="author" content="aohui" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="css/example.css" />
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/jquery.easings.min.js"></script>
+	<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#1bbc9b', '#7BAABE','#1bbc9b', '#4BBFC3', '#2C3437 '],
+				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage','5thpage','6thpage','7thpage','lastPage'],
+				menu: '#menu',
+				css3: true,
+				scrollingSpeed: 1000,
+				navigation: true,
+        		navigationPosition: 'right',
+        		navigationTooltips: ['Introduction', 'App Shell', 'Service Workers', 'Push Notification','App Manifest','Install Banners','Development','END'],
+        		afterLoad:function(anchorLink,index){
+        			if(index==8){
+			    		animate();
+			    	}
+        
+			        $(".end-content .play").click(animate).mouseover(function(){
+			          $(".end-content .play").css({"background-color":"#A55"});
+			        }).mouseout(function(){
+			          $(".end-content .play").css({"background-color":"#060"});
+			        });
+
+			        function animate(){
+			          $('.end-content>div>div').each(function(id){
+			          $(this).css({
+			            position: 'relative',
+			            top: '-200px',
+			            opacity: 0
+			          });
+			          var wait = Math.floor((Math.random()*3000)+1);
+			          $(this).delay(wait).animate({
+			            top: '0px',
+			            opacity: 1
+			          },1000);
+			        });
+			      }
+        		}
+			});
+
+			$('#showExamples').click(function(e){
+				e.stopPropagation();
+				e.preventDefault();
+				$('#examplesList').toggle();
+			});
+
+			$('html').click(function(){
+				$('#examplesList').hide();
+			});
+		});
+	</script>
+
+</head>
+<body>
+<div class="ppt-title">
+	浅谈PWA
+</div>
+<ul id="menu">
+	<li data-menuanchor="firstPage" class="active"><a href="#firstPage">Introduction</a></li>
+	<li data-menuanchor="secondPage"><a href="#secondPage">App Shell</a></li>
+	<li data-menuanchor="3rdPage"><a href="#3rdPage">Service Workers</a></li>
+	<li data-menuanchor="4thpage"><a href="#4thpage">Push Notification</a></li>
+	<li data-menuanchor="5thpage"><a href="#5thpage">App Manifest</a></li>
+	<li data-menuanchor="6thpage"><a href="#6thpage">Install Banners</a></li>
+	<li data-menuanchor="7thpage"><a href="#7thpage">Development</a></li>
+	<li data-menuanchor="lastPage"><a href="#lastPage">END</a></li>
+</ul>
+
+<div id="fullpage">
+	<div class="section active" id="section0">
+		<div class="slide active">
+			<div class="intro">
+				<h1>Introduction</h1>
+				<div class="h40"></div>
+				<h3>什么是 Progressive Web App?</h3>
+				<!--<img src="images/slider.png" alt="slider" height="132" width="662" />-->
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<div class="h40"></div>
+				<ul class="ul-1">
+					<li><strong>渐进增强</strong> - 能够让每一位用户使用，无论用户使用什么浏览器，因为它是始终以渐进增强为原则。</li>
+					<li><strong>响应式用户界面</strong> - 适应任何环境：桌面电脑，智能手机，笔记本电脑，或者其他设备。</li>
+					<li><strong>不依赖网络连接</strong> - 通过 service workers 可以在离线或者网速极差的环境下工作。</li>
+					<li><strong>类原生应用</strong> - 有像原生应用般的交互和导航给用户原生应用般的体验，因为它是建立在 app shell model 上的。</li>
+					<li><strong>持续更新</strong> - 受益于 service worker 的更新进程，应用能够始终保持更新。</li>
+					<li><strong>安全</strong> - 通过 HTTPS 来提供服务来防止网络窥探，保证内容不被篡改。</li>
+					<li><strong>可发现</strong> - 得益于 W3C manifests 元数据和 service worker 的登记，让搜索引擎能够找到 web 应用。</li>
+					<li><strong>再次访问</strong> - 通过消息推送等特性让用户再次访问变得容易。</li>
+					<li><strong>可安装</strong> - 允许用户保留对他们有用的应用在主屏幕上，不需要通过应用商店。</li>
+					<li><strong>可连接性</strong> - 通过 URL 可以轻松分享应用，不用复杂的安装即可运行。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/flipkart-1.jpeg" alt="slider" width="850" height="478" />
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/flipkart-2.jpeg" alt="slider" width="850" height="478" />
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/flipkart-3.jpeg" alt="slider" width="850" height="478" />
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section1">
+		<div class="slide active">
+			<div class="intro">
+				<h1>App Shell</h1>
+				<div class="h40"></div>
+				<h3>基于应用外壳的架构</h3>
+				<!--<img src="images/slider.png" alt="slider" height="132" width="662" />-->
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/appshell.png" width="646" height="478">
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>设计应用外壳</h3>
+				<div class="h40"></div>
+				<ul class="ul-1">
+					<li>需要立刻显示什么在屏幕上？</li>
+					<li>我们的应用需要那些关键的 UI 组件？</li>
+					<li>应用外壳需要那些资源？比如图片，JavaScript，样式表等等。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<div style="transform: rotate(-90deg) translate(80px,0px);">
+					<img src="images/shell.png" width="500" height="890">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section2">
+		<div class="slide active">
+			<div class="intro">
+				<h1>Service Workers</h1>
+				<div class="h40"></div>
+				<h3>Service Worker 是什么？</h3>
+				<!--<img src="images/slider.png" alt="slider" height="132" width="662" />-->
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<div class="h40"></div>
+				<ul class="ul-1">
+					<li>一个 service worker 是一段运行在浏览器后台进程里的脚本，它独立于当前页面，提供了那些不需要与web页面交互的功能在网页背后悄悄执行的能力。在将来，基于它可以实现消息推送，静默更新以及地理围栏等服务，但是目前它首先要具备的功能是拦截和处理网络请求，包括可编程的响应缓存管理。</li>
+					<li>它是一种 JavaScript 工作线程，无法直接访问 DOM。 服务工作线程通过响应 postMessage 接口发送的消息来与其控制的页面通信，页面可在必要时对 DOM 执行操作。</li>
+					<li>Service worker是一个可编程的网络代理，允许开发者控制页面上处理的网络请求。</li>
+					<li>Service worker是一个可编程的网络代理，允许开发者控制页面上处理的网络请求。</li>
+					<li>Service worker大量使用promise。</li>
+					<li>Service worker 权限很高，所以需要运行在 HTTPS 上，防止被人从中攻击。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/sw-1.png" width="850" height="477">
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<div class="h40"></div>
+				<h3>Service Worker的生命周期</h3>
+				<img src="images/sw-lifecycle.png" width="489" height="478">
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<div class="h40"></div>
+				<ul class="ul-1">
+					<li><strong>install</strong> 事件通常在 ServiceWorker 首次运行的时候被激活，通常在这个时间点缓存资源，以便于用户在下次访问时能提速。</li>
+					<li><strong>activate</strong> 事件在一次成功的 install 之后被触发。这个时间点我们可以删除旧版本的的缓存,更新一个Service Worker。</li>
+					<li><strong>fetch</strong> 事件能截取当前 ServiceWorker 作用域下发出的请求，这时候我们可以拦截请求并作出响应。</li>
+					<li><strong>message</strong> 事件在接收到消息的时候执行。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>Register</h3>
+				<img src="images/sw-2.png" width="1079" height="303">
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>install</h3>
+				<img src="images/sw-3.png" width="1080" height="457">
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>activate</h3>
+				<img src="images/sw-4.png" width="1075" height="426">
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>fetch</h3>
+				<img src="images/sw-5.png" width="1076" height="350">
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>message</h3>
+				<p style="width:60%; text-align:justify; margin:2rem auto 0;">页面和serviceWorker之间可以通过posetMessage()方法发送消息，发送的消息可以通过message事件接收到。</p>
+				<p style="width:60%; text-align:justify; margin:2rem auto 0;">这是一个双向的过程，页面可以发消息给service worker，service worker也可以发送消息给页面，由于这个特性，可以将service worker作为中间纽带，使得一个域名或者子域名下的多个页面可以自由通信。</p>
+				<p><a href="message_1.html" class="btn-link" target="_blank">Demo</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section3">
+		<div class="slide active">
+			<div class="intro">
+				<h1>Push Notification</h1>
+				<div class="h40"></div>
+				<h3>网络推送通知：及时、相关且精确</h3>
+				<!--<img src="images/slider.png" alt="slider" height="132" width="662" />-->
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<ul class="ul-1">
+					<li>使用网络推送通知，用户可以选择从他们喜欢的网站加入最新更新，您还可以使用自定义的相关内容重新吸引用户。</li>
+					<li>推送基于服务工作线程，因为服务工作线程在后台操作。 这就是说，针对推送通知运行代码的唯一时间（换言之，使用电池的唯一时间）是用户通过点击或关闭通知来与其进行交互之时。</li>
+					<li>推送和通知使用不同但互补的 API：推送是指服务器向服务工作线程提供信息的操作；通知是指服务工作线程或网页脚本向用户显示信息的操作。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<img src="images/cc-good.png" width="720" height="332">
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section4">
+		<div class="intro">
+			<h1>网络应用清单</h1>
+			<div class="h40"></div>
+			<h3>App Manifest</h3>
+			<p><a href="https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/" class="btn-link" target="_blank">参考资料</a></p>
+		</div>
+	</div>
+	<div class="section" id="section5">
+		<div class="intro">
+			<h1>Install Banners</h1>
+			<div class="h40"></div>
+			<h3>网络应用安装横幅</h3>
+			<p><a href="https://developers.google.com/web/fundamentals/engage-and-retain/app-install-banners/" class="btn-link" target="_blank">参考资料</a></p>
+		</div>
+	</div>
+	<div class="section" id="section6">
+		<div class="slide active">
+			<div class="intro">
+				<h1>Development</h1>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>准备工作</h3>
+				<ul class="ul-1">
+					<li>Chrome 52 或以上，Web Server for Chrome 或其他的网络服务器。</li>
+					<li>准备一个 HTML 文件, 以及相应的 CSS 等:</li>
+					<li>添加 manifest.json 文件</li>
+					<li>添加 Service Worker(处理静态缓存、处理动态缓存、更新静态资源),找一个靠谱的 Service Worker 库</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>注意事项</h3>
+				<ul class="ul-2">
+					<li>降级方案：页面先请求开关接口，若降级，则不安装并且注销所有 SW，降级一定要注销掉 SW ，而不是简单地不安装。这是因为降级前可能已经有用户访问过网站，导致 SW 被安装，不注销的话降级开关对这部分用户是不起作用的。降级开关需要有即时性，因此服务器和 SW 都不应该缓存该接口。</li>
+					<li>低版本 chromium 不支持 cache.addAll，可以考虑引入带有 polyfill 的库</li>
+					<li>UC 浏览器不支持 cache.add ，请用 cache.put 代替</li>
+					<li>Android WebView 中 UserAgent 不正确，cookies 丢失，在 WebView 修复之前，你可以通过避免在 SW 里代理需要 UA 和 cookies 的请求（通常是API请求）来避开这个 bug。</li>
+					<li>Service Worker 中的 Javascript 代码必须是非阻塞的，所以你不应该在 Service Worker 代码中是用 localStorage，因为 localStorage 是阻塞性的。</li>
+					<li>使用 fetch 时，默认情况下请求中不包含 Cookie 等凭据,如需凭据，改为调用fetch(url, {credentials: 'include'})</li>
+					<li>默认情况下，从不支持 CORS 的第三方网址中获取资源将会失败。 您可以向请求中添加 no-CORS 选项来克服此问题，不过这可能会导致“不透明”的响应，这意味着您无法辨别响应是否成功。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="intro">
+				<h3>注意事项</h3>
+				<ul class="ul-2">
+					<li>response 只能用一次，需要用多次的话，需要执行 response.clone()</li>
+					<li>service worker并不是一直在后台运行的。在页面关闭后，浏览器可以继续保持service worker运行，也可以关闭service worker，这取决与浏览器自己的行为。所以不要定义一些全局变量</li>
+					<li>当service worker监听fetch事件以后，对应的请求都会经过service worker。通过chrome的network工具，可以看到此类请求会标注：from service worker。如果service worker中出现了问题，会导致所有请求失败，包括普通的html文件。所以service worker的代码质量、容错性一定要很好才能保证web app正常运行。</li>
+					<li>ache.addAll() 是原子操作，如果某个文件缓存失败了，那么整个缓存就会失败！</li>
+					<li>存依赖于每次修改内容后更新缓存名称</li>
+					<li>每次修改后所有资源都需要被重新下载</li>
+					<li>浏览器的缓存可能阻碍 service worker 的缓存的更新</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section7">
+		<div class="intro">
+			<h1 style="color:#fff;">谢谢</h1>
+			<div class='end-content'>
+		      <div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		      </div>
+		      <div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		      </div>
+		      <div style='padding-left:80px'>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div style='margin-left:102px'></div>
+		        <div></div>
+		      </div>
+		      <div style='padding-left:80px'>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div style='margin-left:102px'></div>
+		        <div></div>
+		      </div>
+		      <div style='padding-left:80px'>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div style='margin-left:102px'></div>
+		        <div></div>
+		      </div>
+		      <div style='padding-left:80px'>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div style='margin-left:102px'></div>
+		        <div></div>
+		      </div>
+		      <div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div style='margin-left:102px'></div>
+		        <div></div>
+		      </div>
+		      <div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div style='margin-left:102px'></div>
+		        <div></div>
+		      </div>
+		      <div style='padding-left:80px'>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div style='margin-left:102px'></div>
+		        <div></div>
+		      </div>
+		      <div style='padding-left:80px'>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div style='margin-left:102px' class="play"></div>
+		        <div class="play"></div>
+		      </div>
+		      <div style='padding-left:80px'>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div class="play"></div>
+		        <div class="play"></div>
+		        <div class="play"></div>
+		      </div>
+		      <div style='padding-left:80px'>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:40px'></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div class="play"></div>
+		        <div class="play"></div>
+		        <div class="play"></div>
+		        <div class="play"></div>
+		      </div>
+		      <div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:180px' class="play"></div>
+		        <div class="play"></div>
+		        <div class="play"></div>
+		      </div>
+		      <div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div></div>
+		        <div style='margin-left:180px' class="play"></div>
+		        <div class="play"></div>
+		      </div>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div id="infoMenu">
+	<ul>
+		<li>
+			<a href="#" id="showExamples">参考资料</a>
+			<div id="examplesList">
+				<div class="column">
+					<h3>延伸阅读</h3>
+					<ul>
+						<li><a href="https://developers.google.com/web/progressive-web-apps/" target="_blank">Progressive Web Apps</a></li>
+						<li><a href="https://codelabs.developers.google.com/codelabs/your-first-pwapp/" target="_blank">your-first-pwapp</a></li>
+						<li><a href="https://huangxuan.me/2017/02/09/nextgen-web-pwa/" target="_blank">下一代 Web 应用模型 —— Progressive Web App</a></li>
+						<li><a href="https://www.youtube.com/playlist?list=PLNYkxOF6rcIAWWNR_Q6eLPhsyx6VvYjVb" target="_blank">Progressive Web App Dev Summit Videos</a></li>
+						<li><a href="https://zhuanlan.zhihu.com/p/25524382" target="_blank">PWA 入门: 理解和创建 Service Worker 脚本</a></li>
+						<li><a href="https://www.w3ctrain.com/2016/09/17/service-workers-note/" target="_blank">Service Workers 初体验</a></li>
+						<li><a href="https://bitsofco.de/the-service-worker-lifecycle/" target="_blank">Service Worker 生命周期</a></li>
+						<li><a href="https://www.smashingmagazine.com/2016/02/making-a-service-worker/" target="_blank">making-a-service-worker</a></li>
+						<li><a href="https://www.w3ctech.com/topic/866" target="_blank">Service Worker 入门</a></li>
+						<li><a href="https://zhuanlan.zhihu.com/p/25700633">Progressive Web App 库在生产环境的使用</a></li>
+						<li><a href="https://jakearchibald.github.io/isserviceworkerready/resources.html" target="_blank">更多内容</a> </li>
+					</ul>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+<script></script>
+</body>
+</html>
